@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 const searchForAccount = (accountName) => {
@@ -9,14 +9,20 @@ const searchForAccount = (accountName) => {
 
 const onSubmit = (e, accountName) => {
     e.preventDefault()
-    searchForAccount()
+    searchForAccount(accountName)
+}
+
+const onChange = (e, seIntputText) => {
+    seIntputText(e.target.value)
 }
 
 const SearchBar = () => {
+    const [inputText, setInputText] = useState('')
+
     return (
         <form>
-            <input type='text'/>
-            <input type='submit' onClick={(e) => onSubmit(e, 'erabin05')}/>
+            <input type='text' onChange={(e)=> onChange(e, setInputText)}/>
+            <input type='submit' onClick={(e) => onSubmit(e, inputText)}/>
         </form>
     )
 }
