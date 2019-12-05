@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { AccountContext } from '../Contexts/AccountContext'
 import axios from 'axios'
 
 const SearchBar = () => {
+    const { account, setAccount } = useContext(AccountContext)
+
     const [inputText, setInputText] = useState('')
-    const [account, setAccount] = useState({})
     const [hasError, setHasError] = useState({status : false})
     const [isSubmited, setIsSubmited] = useState(false)
 
@@ -13,6 +15,8 @@ const SearchBar = () => {
         setHasError, 
         setIsSubmited
     }
+
+    useEffect(()=>console.log(account), [account])
 
     return (
         <form>
