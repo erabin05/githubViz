@@ -27,3 +27,19 @@
     position: absolute;
 }
 
+@media screen and (max-width : 768px) {
+    .account-container > form {
+        width: 90%;
+    }
+    .account-container > form > div {
+        width : 100%;
+        display: flex;
+    }
+    .account-container > form > div > input[type=text]{
+        width : 100%;
+    }
+    .account-container > form > input[type=submit]{
+        width: 15%;
+    }
+}
+

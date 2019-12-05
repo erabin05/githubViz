@@ -15,11 +15,11 @@ const AccountContainer = () => {
     return (
         <section className='account-container'>
             <SearchBar/>
-            {/* {
+            {
                 !hasError.status
                 && isSubmited
                 && <Account/>
-            } */}
+            }
         </section>
     )
 }

@@ -4,6 +4,7 @@ body {
 
 * {
     font-family: sans-serif;
+    box-sizing: border-box;
 }
 
 .warning {
@@ -23,13 +24,16 @@ input {
     border : solid 2px #000;
     background: none;
 }
+input:focus {
+    outline: none;
+}
 input[type=text] {
     font-size : 1.5rem;
     font-weight: 700;
     padding: 0.3em 0.7rem 0.3rem 0.7rem;
 }
-input[type=text]:focus {
-    outline: none;
+input[type=text]::placeholder {
+    opacity: 0.4;
 }
 input[type=submit] {
     padding: 0.3em 1rem 0.3rem 1rem;

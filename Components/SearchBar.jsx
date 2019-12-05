@@ -12,7 +12,6 @@ const SearchBar = () => {
         isSubmited, 
         setIsSubmited 
     } = useContext(AccountContext)
-
     const [inputText, setInputText] = useState('')
 
     const set = {
@@ -26,21 +25,26 @@ const SearchBar = () => {
 
     return (
         <form>
-            <label htmlFor='account'>Enter your Github </label>
+            <label htmlFor='account'>Enter Github pseudo</label>
             <div>
                 <input 
                     type='text'
                     id='account'
+                    placeholder='pseudo'
                     spellCheck="false"
                     onChange={(e)=> onChange(e, set)}
                 />
-                <input type='submit' onClick={(e) => onSubmit(e, inputText, set)}/>
+                <input 
+                    type='submit'
+                    value='Submit' 
+                    onClick={(e) => onSubmit(e, inputText, set)}
+                />
             </div>
             <div className='warning'>
                 { 
                     isSubmited 
                     && hasError.status  
-                    && <p>{ hasError.message }</p>
+                    && <p>{hasError.message}</p>
                 }
             </div>
         </form>
@@ -54,7 +58,15 @@ const onChange = (e, set) => {
 
 const onSubmit = (e, accountName, set) => {
     e.preventDefault()
-    searchForAccount(accountName, set)
+    if (accountName) {
+        searchForAccount(accountName, set)
+    } else {
+        set.setIsSubmited(true)
+        set.setHasError({
+            status : true,
+            message :"Can't be empty"
+        })
+    }
 }
 
 const searchForAccount = (accountName, set) => {
@@ -67,7 +79,8 @@ const searchForAccount = (accountName, set) => {
         .catch(err => {
             set.setHasError({
                 status : true,
-                message : err.message
+                message :"Account doesn't exist",
+                err
             })
             set.setIsSubmited(true)
         })
