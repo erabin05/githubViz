@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import '../style.css'
 
-import Account from '../Components/Account'
-import SearchBar from '../Components/SearchBar'
+// import Account from '../Components/Account'
+// import SearchBar from '../Components/SearchBar'
+
+import AccountContainer from '../Containers/AccountContainer'
 
 import AccountContextProvider from '../Contexts/AccountContext'
 
 const Index = () => {
-    const [account, setAccount] = useState({})
-
     return (
         <AccountContextProvider>
-            <SearchBar/>
-            <Account/>
+            <AccountContainer/>
         </AccountContextProvider>
     )
 }

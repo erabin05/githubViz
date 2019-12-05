@@ -4,11 +4,16 @@ import axios from 'axios'
 import { AccountContext } from '../Contexts/AccountContext'
 
 const SearchBar = () => {
-    const { account, setAccount } = useContext(AccountContext)
+    const {
+        account,
+        setAccount,
+        hasError,
+        setHasError,
+        isSubmited, 
+        setIsSubmited 
+    } = useContext(AccountContext)
 
     const [inputText, setInputText] = useState('')
-    const [hasError, setHasError] = useState({status : false})
-    const [isSubmited, setIsSubmited] = useState(false)
 
     const set = {
         setInputText,
@@ -23,12 +28,10 @@ const SearchBar = () => {
         <form>
             <input type='text' onChange={(e)=> onChange(e, set)}/>
             <input type='submit' onClick={(e) => onSubmit(e, inputText, set)}/>
-            { isSubmited 
-                && <p>{
-                    hasError.status 
-                    ?  hasError.message 
-                    : 'account found'
-                }</p>
+            { 
+                isSubmited 
+                && hasError.status  
+                && <p>{ hasError.message }</p>
             }
         </form>
     )
