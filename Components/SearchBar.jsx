@@ -7,10 +7,16 @@ const SearchBar = () => {
     const [hasError, setHasError] = useState({status : false})
     const [isSubmited, setIsSubmited] = useState(false)
 
+    const set = {
+        setAccount, 
+        setHasError, 
+        setIsSubmited
+    }
+
     return (
         <form>
             <input type='text' onChange={(e)=> onChange(e, setInputText, setIsSubmited)}/>
-            <input type='submit' onClick={(e) => onSubmit(e, inputText, setAccount, setHasError, setIsSubmited)}/>
+            <input type='submit' onClick={(e) => onSubmit(e, inputText, set)}/>
             { isSubmited 
                 && <p>{
                     hasError.status 
@@ -27,24 +33,24 @@ const onChange = (e, seIntputText, setIsSubmited) => {
     setIsSubmited(false)
 }
 
-const onSubmit = (e, accountName, setAccount, setHasError, setIsSubmited) => {
+const onSubmit = (e, accountName, set) => {
     e.preventDefault()
-    searchForAccount(accountName, setAccount, setHasError, setIsSubmited)
+    searchForAccount(accountName, set)
 }
 
-const searchForAccount = (accountName, setAccount, setHasError, setIsSubmited) => {
+const searchForAccount = (accountName, set) => {
     axios.get(`https://api.github.com/users/${accountName}`)
         .then(res => {
-            setAccount(res.data)
-            setHasError({status : false})
-            setIsSubmited(true)
+            set.setAccount(res.data)
+            set.setHasError({status : false})
+            set.setIsSubmited(true)
         })
         .catch(err => {
-            setHasError({
+            set.setHasError({
                 status : true,
                 message : err.message
             })
-            setIsSubmited(true)
+            set.setIsSubmited(true)
         })
 }
 
