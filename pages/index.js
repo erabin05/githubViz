@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+
+import Account from '../Components/Account'
 import SearchBar from '../Components/SearchBar'
 
 import AccountContextProvider from '../Contexts/AccountContext'
@@ -9,6 +11,7 @@ const Index = () => {
     return (
         <AccountContextProvider>
             <SearchBar/>
+            <Account/>
         </AccountContextProvider>
     )
 }

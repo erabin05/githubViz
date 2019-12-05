@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { AccountContext } from '../Contexts/AccountContext'
 import axios from 'axios'
+
+import { AccountContext } from '../Contexts/AccountContext'
 
 const SearchBar = () => {
     const { account, setAccount } = useContext(AccountContext)
