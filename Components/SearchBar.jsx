@@ -8,6 +8,7 @@ const SearchBar = () => {
     const [isSubmited, setIsSubmited] = useState(false)
 
     const set = {
+        setInputText,
         setAccount, 
         setHasError, 
         setIsSubmited
@@ -15,7 +16,7 @@ const SearchBar = () => {
 
     return (
         <form>
-            <input type='text' onChange={(e)=> onChange(e, setInputText, setIsSubmited)}/>
+            <input type='text' onChange={(e)=> onChange(e, set)}/>
             <input type='submit' onClick={(e) => onSubmit(e, inputText, set)}/>
             { isSubmited 
                 && <p>{
@@ -28,9 +29,9 @@ const SearchBar = () => {
     )
 }
 
-const onChange = (e, seIntputText, setIsSubmited) => {
-    seIntputText(e.target.value)
-    setIsSubmited(false)
+const onChange = (e, set) => {
+    set.setInputText(e.target.value)
+    set.setIsSubmited(false)
 }
 
 const onSubmit = (e, accountName, set) => {
