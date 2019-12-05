@@ -36,7 +36,7 @@ const SearchBar = () => {
                 />
                 <input 
                     type='submit'
-                    value='Submit' 
+                    value='Find' 
                     onClick={(e) => onSubmit(e, inputText, set)}
                 />
             </div>
@@ -79,7 +79,7 @@ const searchForAccount = (accountName, set) => {
         .catch(err => {
             set.setHasError({
                 status : true,
-                message :"Account doesn't exist",
+                message :"Doesn't exist",
                 err
             })
             set.setIsSubmited(true)

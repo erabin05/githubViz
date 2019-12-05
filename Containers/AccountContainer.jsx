@@ -13,14 +13,14 @@ const AccountContainer = () => {
     } = useContext(AccountContext)
 
     return (
-        <section className='account-container'>
-            <SearchBar/>
+        <main className='account-container'>
             {
                 !hasError.status
                 && isSubmited
-                && <Account/>
+                ? <Account/>
+                : <SearchBar/>
             }
-        </section>
+        </main>
     )
 }
 
