@@ -1,3 +1,39 @@
-section {
-    border : solid 1px #000;
+body {
+    margin : 0;
+}
+
+* {
+    font-family: sans-serif;
+}
+
+.warning {
+    color : red;
+    font-size: 0.8rem;
+}
+
+
+/* INPUT */
+label {
+    margin-bottom: 0.3rem;
+}
+label, input[type=submit] {
+    font-size: 1rem;
+}
+input {
+    border : solid 2px #000;
+    background: none;
+}
+input[type=text] {
+    font-size : 1.5rem;
+    font-weight: 700;
+    padding: 0.3em 0.7rem 0.3rem 0.7rem;
+}
+input[type=text]:focus {
+    outline: none;
+}
+input[type=submit] {
+    padding: 0.3em 1rem 0.3rem 1rem;
+}
+input[type=submit]:hover {
+    cursor: pointer;
 }

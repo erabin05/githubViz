@@ -26,13 +26,23 @@ const SearchBar = () => {
 
     return (
         <form>
-            <input type='text' onChange={(e)=> onChange(e, set)}/>
-            <input type='submit' onClick={(e) => onSubmit(e, inputText, set)}/>
-            { 
-                isSubmited 
-                && hasError.status  
-                && <p>{ hasError.message }</p>
-            }
+            <label htmlFor='account'>Enter your Github </label>
+            <div>
+                <input 
+                    type='text'
+                    id='account'
+                    spellCheck="false"
+                    onChange={(e)=> onChange(e, set)}
+                />
+                <input type='submit' onClick={(e) => onSubmit(e, inputText, set)}/>
+            </div>
+            <div className='warning'>
+                { 
+                    isSubmited 
+                    && hasError.status  
+                    && <p>{ hasError.message }</p>
+                }
+            </div>
         </form>
     )
 }

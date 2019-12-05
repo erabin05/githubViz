@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
+import './account.css'
 
 import Account from '../Components/Account'
 import SearchBar from '../Components/SearchBar'
@@ -11,23 +12,16 @@ const AccountContainer = () => {
         isSubmited
     } = useContext(AccountContext)
 
-    useEffect(()=> {
-        console.log(`hasError : ${hasError.status}`)
-        console.log(`isSubmited : ${isSubmited}`)
-    }, [isSubmited])
-
     return (
-        <>
+        <section className='account-container'>
             <SearchBar/>
-            {
+            {/* {
                 !hasError.status
                 && isSubmited
                 && <Account/>
-            }
-        </>
+            } */}
+        </section>
     )
-
-    
 }
 
 export default AccountContainer
