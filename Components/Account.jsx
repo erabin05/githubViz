@@ -18,7 +18,7 @@ const Account = () => {
                     </figure>
                     <h1>{account.login}</h1>
                 </article>
-                <Link href="/dashboard">
+                <Link href={`/dashboard?account=${account.login}`}>
                     <input type="submit" value="Submit"/>
                 </Link>
             </div>

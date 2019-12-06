@@ -1,18 +1,17 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
 
 import { AccountContext } from '../Contexts/AccountContext'
 
 const SearchBar = () => {
     const {
-        account,
         setAccount,
         hasError,
         setHasError,
         isSubmited, 
         setIsSubmited 
     } = useContext(AccountContext)
-    
+
     const [inputText, setInputText] = useState('')
 
     const set = {
@@ -21,9 +20,6 @@ const SearchBar = () => {
         setHasError, 
         setIsSubmited
     }
-
-    useEffect(()=>console.log(account), [account])
-
     return (
         <form>
             <label htmlFor='account'>Enter Github pseudo</label>
