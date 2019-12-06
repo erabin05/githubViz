@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import Link from 'next/link';
 
 import { AccountContext } from '../Contexts/AccountContext'
 
@@ -17,7 +18,9 @@ const Account = () => {
                     </figure>
                     <h1>{account.login}</h1>
                 </article>
-                <input type="submit" value="Submit"/>
+                <Link href="/dashboard">
+                    <input type="submit" value="Submit"/>
+                </Link>
             </div>
         </section>
     )
