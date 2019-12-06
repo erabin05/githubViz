@@ -4,6 +4,8 @@ import './account.css'
 import Account from '../Components/Account'
 import SearchBar from '../Components/SearchBar'
 
+import FadeIn from '../StyleComponents/FadeIn'
+
 import { AccountContext } from '../Contexts/AccountContext'
 
 const AccountContainer = () => {
