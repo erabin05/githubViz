@@ -1,3 +1,5 @@
+/* SearchBar */
+
 .account-container {
     width: 100%;
     height: 100vh;
@@ -43,6 +45,7 @@
     }
 }
 
+/* Account */
 
 .account-container > section > div {
     display: flex;
@@ -66,5 +69,24 @@
 }
 .account-container > section  div > input[type=submit] {
     height: 4.2rem;
+}
+
+
+@media screen and (max-width : 768px) {
+    .account-container > section {
+        width: 90%;
+    }
+
+    .account-container > section > div {
+        width: 100%;
+    }
+
+    .account-container > section > div > article {
+        min-width: 70%;
+    }
+
+    .account-container > section  div > input[type=submit] {
+        width: 30%;
+    }
 }
 
