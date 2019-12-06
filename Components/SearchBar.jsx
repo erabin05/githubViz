@@ -12,6 +12,7 @@ const SearchBar = () => {
         isSubmited, 
         setIsSubmited 
     } = useContext(AccountContext)
+    
     const [inputText, setInputText] = useState('')
 
     const set = {
