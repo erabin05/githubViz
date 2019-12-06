@@ -1,14 +1,12 @@
-import React, {useEffect} from 'react'
+import React from 'react'
+
+import DashBoardContainer from '../Containers/DashboardContainer'
 
 const DashBoard = ({query}) => {
 
-    useEffect(()=> {
-        console.log(query)
-    })
-
     return (
         <div>
-            Hola
+            <DashBoardContainer accountName={query.account}/>
         </div>
     )
 }
