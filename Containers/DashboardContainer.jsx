@@ -1,12 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import axios from 'axios'
 
 import Persona from '../Components/Persona'
 
+import { DashBoardContext } from '../Contexts/DasboardContext'
+
 const DashboardContainer = ({accountName}) => {
+    const { setAccount } = useContext(DashBoardContext)
+
+    const set = {
+        setAccount
+    }
 
     useEffect(()=> {
-        getAccount(accountName)
+        getAccount(accountName, set)
     })
 
     return (
@@ -17,9 +24,9 @@ const DashboardContainer = ({accountName}) => {
 }
 
 
-const getAccount = (accountName) => {
+const getAccount = (accountName, set) => {
     axios.get(`https://api.github.com/users/${accountName}`)
-        .then(res=> console.log(res.data))
+        .then(res=> set.setAccount(res.data))
 }
 
 

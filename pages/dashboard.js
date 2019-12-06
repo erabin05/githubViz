@@ -2,12 +2,14 @@ import React from 'react'
 
 import DashBoardContainer from '../Containers/DashboardContainer'
 
+import DashBoardContextProvider from '../Contexts/DasboardContext'
+
 const DashBoard = ({query}) => {
 
     return (
-        <div>
+        <DashBoardContextProvider>
             <DashBoardContainer accountName={query.account}/>
-        </div>
+        </DashBoardContextProvider>
     )
 }
 

@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { DashBoardContext } from '../Contexts/DasboardContext'
 
 const Persona = () => {
+    const { account } = useContext(DashBoardContext)
+
     return (
-        <div>yo</div>
+        <div>{account.login}</div>
     )
 }
 
