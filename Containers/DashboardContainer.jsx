@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react'
+import "./dashboard.css"
 import axios from 'axios'
 
 import Persona from '../Components/Persona'
@@ -17,9 +18,9 @@ const DashboardContainer = ({accountName}) => {
     })
 
     return (
-        <>
+        <main  className='dashboard-container'>
             <Persona/>
-        </>
+        </main>
     )
 }
 

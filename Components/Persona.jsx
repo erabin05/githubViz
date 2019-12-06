@@ -6,7 +6,14 @@ const Persona = () => {
     const { account } = useContext(DashBoardContext)
 
     return (
-        <div>{account.login}</div>
+        <header>
+            <figure>
+                <img src={account.avatar_url} alt={`${account.login}'s avatar`}/>
+            </figure>
+            <h1>{account.login}</h1>
+            <p>{account.created_at}</p>
+            <p>{account.location}</p>
+        </header>
     )
 }
 
