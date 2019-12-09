@@ -3,6 +3,7 @@ import "./dashboard.css"
 import axios from 'axios'
 
 import Persona from '../Components/Persona'
+import Languages from '../Components/Languages'
 
 import { errorMessageFor } from '../Utilities/error'
 
@@ -35,7 +36,7 @@ const DashboardContainer = ({accountName}) => {
                 <main  className='dashboard-container'>
                     <Persona/>
                     <section>
-
+                        <Languages/>
                     </section>
                 </main>
             : 
