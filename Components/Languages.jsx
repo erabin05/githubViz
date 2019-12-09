@@ -13,26 +13,38 @@ const Languages = () => {
 
     return (
         <div>
-            yo
+            {languagesInRepos(repos).map((language)=>(
+                <p key={language.name}>
+                    {
+                        `${
+                        language.name 
+                        ? language.name
+                        : 'Autre'
+                        } : ${percentage(repos, language)} %`
+                    }
+                </p>
+            ))}
         </div>
     )
 }
 
 const languagesInRepos = (repos) =>
     repos.reduce((acc, repo) => {
-        return acc.filter(repoInAcc => repoInAcc.language === repo.language).length
+        return acc.filter(repoInAcc => repoInAcc.name === repo.language).length
           ? acc.map(repoInAcc =>
-              repoInAcc.language === repo.language
+              repoInAcc.name === repo.language
                 ? { ...repoInAcc, count: repoInAcc.count + 1 }
                 : repoInAcc
             )
           : [
               ...acc,
               {
-                language: repo.language,
-                count: 0
+                name: repo.language,
+                count: 1
               }
             ];
       }, []);
+
+const percentage = (repos, language) => Math.floor((language.count  * 100) / repos.length)
 
 export default Languages
