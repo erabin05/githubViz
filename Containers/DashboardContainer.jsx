@@ -37,9 +37,9 @@ const DashboardContainer = ({accountName}) => {
                     </section>
                 </main>
             : 
-                <p className="warning">Account doesn't exist</p>
+                <p className="warning center">Account doesn't exist</p>
         :
-            <p>Ready in a second</p>
+            <div className="center"><div className="lds-dual-ring"></div></div>
     )
 }
 
@@ -48,6 +48,7 @@ const getAccount = (accountName, set) => {
     axios.get(`https://api.github.com/users/${accountName}`)
         .then(res=> {
             set.setAccount(res.data)
+            set.setHasGetAccountError(false)
             set.setIsAccountLoaded(true)
         })
         .catch(err => {

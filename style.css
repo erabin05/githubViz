@@ -29,6 +29,14 @@ figure > img {
     font-size: 0.8rem;
 }
 
+.center {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* INPUT */
 label {
@@ -58,3 +66,31 @@ input[type=submit] {
 input[type=submit]:hover, a:hover{
     cursor: pointer;
 }
+
+
+/* Load Circle */
+
+.lds-dual-ring {
+    display: inline-block;
+    width:  2rem;
+    height: 2rem;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    margin: 8px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    border-color: #000 transparent #000 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
