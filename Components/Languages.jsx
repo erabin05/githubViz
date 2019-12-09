@@ -8,7 +8,7 @@ const Languages = () => {
     } = useContext(DashBoardContext)
 
     useEffect(()=>{
-        console.log(repos)
+        console.log(languagesInRepos(repos))
     }, [repos])
 
     return (
@@ -18,8 +18,21 @@ const Languages = () => {
     )
 }
 
-const languagesInRepos = () => {
-    
-}
+const languagesInRepos = (repos) =>
+    repos.reduce((acc, repo) => {
+        return acc.filter(repoInAcc => repoInAcc.language === repo.language).length
+          ? acc.map(repoInAcc =>
+              repoInAcc.language === repo.language
+                ? { ...repoInAcc, count: repoInAcc.count + 1 }
+                : repoInAcc
+            )
+          : [
+              ...acc,
+              {
+                language: repo.language,
+                count: 0
+              }
+            ];
+      }, []);
 
 export default Languages
