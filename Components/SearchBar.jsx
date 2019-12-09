@@ -31,6 +31,7 @@ const SearchBar = () => {
                     id='account'
                     placeholder='pseudo'
                     spellCheck="false"
+                    autoComplete="off"
                     onChange={(e)=> onChange(e, set)}
                 />
                 <input 
