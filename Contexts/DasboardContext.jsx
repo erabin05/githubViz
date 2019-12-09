@@ -6,6 +6,8 @@ const DashBoardContextProvider = ({children}) => {
     const [account, setAccount] = useState({})
     const [hasGetAccountError, setHasGetAccountError] = useState({status : false})
     const [isAccountLoaded, setIsAccountLoaded] = useState(false)
+    const [repos, setRepos] = useState([])
+    const [hasGetReposError, setHasGetReposError] = useState({status : false})
 
     return (
         <DashBoardContext.Provider value={{
@@ -13,8 +15,12 @@ const DashBoardContextProvider = ({children}) => {
             setAccount,
             hasGetAccountError,
             setHasGetAccountError,
-            isAccountLoaded, 
-            setIsAccountLoaded
+            isAccountLoaded,
+            setIsAccountLoaded,
+            repos,
+            setRepos,
+            hasGetReposError,
+            setHasGetReposError
         }}>
             {children}
         </DashBoardContext.Provider>

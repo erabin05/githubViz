@@ -15,13 +15,17 @@ const DashboardContainer = ({accountName}) => {
         hasGetAccountError,
         setHasGetAccountError,
         isAccountLoaded, 
-        setIsAccountLoaded
+        setIsAccountLoaded,
+        setRepos,
+        setHasGetReposError
      } = useContext(DashBoardContext)
 
     const set = {
         setAccount,
         setHasGetAccountError,
-        setIsAccountLoaded
+        setIsAccountLoaded,
+        setHasGetReposError,
+        setRepos
     }
 
     useEffect(()=> {
@@ -53,6 +57,8 @@ const getAccount = (accountName, set) => {
             set.setAccount(res.data)
             set.setHasGetAccountError({status : false})
             set.setIsAccountLoaded(true)
+
+            getRepos(accountName, set)
         })
         .catch(err => {
             set.setHasGetAccountError({
@@ -61,6 +67,21 @@ const getAccount = (accountName, set) => {
                 err
             })
             set.setIsAccountLoaded(true)
+        })
+}
+
+const getRepos = (accountName, set) => {
+    axios.get(`https://api.github.com/users/${accountName}/repos`)
+        .then(res => {
+            set.setHasGetReposError({status : false})
+            set.setRepos(res.data)
+        })
+        .catch(err => {
+            set.setHasGetReposError({
+                status : true,
+                message : errorMessageFor(err.response.status),
+                err
+            })
         })
 }
 
