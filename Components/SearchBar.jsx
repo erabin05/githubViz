@@ -3,6 +3,8 @@ import axios from 'axios'
 
 import { AccountContext } from '../Contexts/AccountContext'
 
+import { errorMessageFor } from '../Utilities/error'
+
 const SearchBar = () => {
     const {
         setAccount,
@@ -76,7 +78,7 @@ const searchForAccount = (accountName, set) => {
         .catch(err => {
             set.setHasError({
                 status : true,
-                message :"Doesn't exist",
+                message : errorMessageFor(err.response.status),
                 err
             })
             set.setIsSubmited(true)

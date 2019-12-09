@@ -4,7 +4,7 @@ export const DashBoardContext = createContext()
 
 const DashBoardContextProvider = ({children}) => {
     const [account, setAccount] = useState({})
-    const [hasGetAccountError, setHasGetAccountError] = useState(false)
+    const [hasGetAccountError, setHasGetAccountError] = useState({status : false})
     const [isAccountLoaded, setIsAccountLoaded] = useState(false)
 
     return (

@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import Persona from '../Components/Persona'
 
+import { errorMessageFor } from '../Utilities/error'
+
 import { DashBoardContext } from '../Contexts/DasboardContext'
 
 const DashboardContainer = ({accountName}) => {
@@ -28,7 +30,7 @@ const DashboardContainer = ({accountName}) => {
     return (
         isAccountLoaded 
         ?
-            !hasGetAccountError 
+            !hasGetAccountError.status
             ?
                 <main  className='dashboard-container'>
                     <Persona/>
@@ -37,7 +39,7 @@ const DashboardContainer = ({accountName}) => {
                     </section>
                 </main>
             : 
-                <p className="warning center">Account doesn't exist</p>
+                <p className="warning center">{hasGetAccountError.message}</p>
         :
             <div className="center"><div className="lds-dual-ring"></div></div>
     )
@@ -48,11 +50,15 @@ const getAccount = (accountName, set) => {
     axios.get(`https://api.github.com/users/${accountName}`)
         .then(res=> {
             set.setAccount(res.data)
-            set.setHasGetAccountError(false)
+            set.setHasGetAccountError({status : false})
             set.setIsAccountLoaded(true)
         })
         .catch(err => {
-            set.setHasGetAccountError(true)
+            set.setHasGetAccountError({
+                status : true,
+                message : errorMessageFor(err.response.status),
+                err
+            })
             set.setIsAccountLoaded(true)
         })
 }
