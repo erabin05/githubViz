@@ -9,7 +9,7 @@ import { errorMessageFor } from '../Utilities/error'
 
 import { DashBoardContext } from '../Contexts/DasboardContext'
 
-const DashboardContainer = ({accountName}) => {
+const DashboardContainer = () => {
     const { 
         setAccount,
         hasGetAccountError,
