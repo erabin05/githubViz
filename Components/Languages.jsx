@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 
 import { DashBoardContext } from '../Contexts/DasboardContext'
 
@@ -6,10 +6,6 @@ const Languages = () => {
     const {
         repos
     } = useContext(DashBoardContext)
-
-    useEffect(()=>{
-        console.log(languagesInRepos(repos))
-    }, [repos])
 
     return (
         <div>
