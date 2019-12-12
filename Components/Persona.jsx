@@ -1,9 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import { DashBoardContext } from '../Contexts/DasboardContext'
 
 const Persona = () => {
     const { account } = useContext(DashBoardContext)
+
+    useEffect(()=>{console.log(account)}, [])
 
     return (
         <header>

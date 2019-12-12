@@ -1,24 +1,20 @@
-import React, { useState, createContext, useEffect } from 'react'
+import React, { useState, createContext} from 'react'
 
 export const DashBoardContext = createContext()
 
-const DashBoardContextProvider = ({children, accountName, yo}) => {
-    const [account, setAccount] = useState({})
+const DashBoardContextProvider = ({children, account, repos}) => {
     const [hasGetAccountError, setHasGetAccountError] = useState({status : false})
-    const [isAccountLoaded, setIsAccountLoaded] = useState(false)
-    const [repos, setRepos] = useState([])
+    const [isAccountLoaded, setIsAccountLoaded] = useState(true)
     const [hasGetReposError, setHasGetReposError] = useState({status : false})
 
     return (
         <DashBoardContext.Provider value={{
             account,
-            setAccount,
             hasGetAccountError,
             setHasGetAccountError,
             isAccountLoaded,
             setIsAccountLoaded,
             repos,
-            setRepos,
             hasGetReposError,
             setHasGetReposError
         }}>

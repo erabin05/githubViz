@@ -6,69 +6,25 @@ import DashBoardContainer from '../Containers/DashboardContainer'
 
 import DashBoardContextProvider from '../Contexts/DasboardContext'
 
-const DashBoard = ({query, account}) => {
-
-    useEffect(()=>{
-        console.log(account)
-    })
+const DashBoard = ({account, repos}) => {
 
     return (
-        <DashBoardContextProvider >
+        <DashBoardContextProvider 
+            account={account}
+            repos={repos}
+        >
             <DashBoardContainer />
         </DashBoardContextProvider>
     )
 }
 
-// DashBoard.getInitialProps = async function ({query}) {
-//     const res = await axios.get(`https://api.github.com/users/erabin05`)
-//     const account = await res.json()
-
-//     return {
-//         account,
-//         query
-//     }
-// }
-
 DashBoard.getInitialProps = async function({query}) {
-    const {data} = await axios.get(`https://api.github.com/users/${query.account}`);
-  
+    const account = await axios.get(`https://api.github.com/users/${query.account}`)
+    const repos = await axios.get(`https://api.github.com/users/${query.account}/repos`)
     return {
-      account: data
+      account : account.data,
+      repos : repos.data
     };
   };
-
-const getAccount = (accountName, set) => {
-    axios.get(`https://api.github.com/users/${accountName}`)
-        .then(res=> {
-            set.setAccount(res.data)
-            set.setHasGetAccountError({status : false})
-            set.setIsAccountLoaded(true)
-
-            getRepos(accountName, set)
-        })
-        .catch(err => {
-            set.setHasGetAccountError({
-                status : true,
-                message : errorMessageFor(err.response.status),
-                err
-            })
-            set.setIsAccountLoaded(true)
-        })
-}
-
-const getRepos = (accountName, set) => {
-    axios.get(`https://api.github.com/users/${accountName}/repos`)
-        .then(res => {
-            set.setHasGetReposError({status : false})
-            set.setRepos(res.data)
-        })
-        .catch(err => {
-            set.setHasGetReposError({
-                status : true,
-                message : errorMessageFor(err.response.status),
-                err
-            })
-        })
-}
-
+  
 export default DashBoard

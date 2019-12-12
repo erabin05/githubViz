@@ -28,10 +28,6 @@ const DashboardContainer = ({accountName}) => {
         setRepos
     }
 
-    useEffect(()=> {
-        getAccount(accountName, set)
-    }, [])
-
     return (
         isAccountLoaded 
         ?
@@ -49,41 +45,5 @@ const DashboardContainer = ({accountName}) => {
             <div className="center"><div className="lds-dual-ring"></div></div>
     )
 }
-
-
-const getAccount = (accountName, set) => {
-    axios.get(`https://api.github.com/users/${accountName}`)
-        .then(res=> {
-            set.setAccount(res.data)
-            set.setHasGetAccountError({status : false})
-            set.setIsAccountLoaded(true)
-
-            getRepos(accountName, set)
-        })
-        .catch(err => {
-            set.setHasGetAccountError({
-                status : true,
-                message : errorMessageFor(err.response.status),
-                err
-            })
-            set.setIsAccountLoaded(true)
-        })
-}
-
-const getRepos = (accountName, set) => {
-    axios.get(`https://api.github.com/users/${accountName}/repos`)
-        .then(res => {
-            set.setHasGetReposError({status : false})
-            set.setRepos(res.data)
-        })
-        .catch(err => {
-            set.setHasGetReposError({
-                status : true,
-                message : errorMessageFor(err.response.status),
-                err
-            })
-        })
-}
-
 
 export default DashboardContainer
